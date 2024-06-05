@@ -1,1 +1,1 @@
-Placement Web Portal project using Django web framework. ()
+Placement Web Portal project using Django web framework.
