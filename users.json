@@ -1,0 +1,17 @@
+{
+    "users": {
+      "student": {
+        "uid": "student123",
+        "username": "student123",
+        "email": "student@example.com",
+        "password": "student123"
+      },
+      "admin": {
+        "uid": "admin123",
+        "username": "admin123",
+        "email": "admin@example.com",
+        "password": "admin123"
+      }
+    }
+  }
+  

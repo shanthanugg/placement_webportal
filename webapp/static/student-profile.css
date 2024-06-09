@@ -1,0 +1,82 @@
+/* Ensure the body and html take full height and center content */
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff; /* White background */
+}
+
+.logout {
+    position: absolute;
+    top: 25px; /* Adjust the distance from the top */
+    right: 20px; /* Adjust the distance from the right */
+    color: #fff; /* Adjust color as needed */
+    text-decoration: none;
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.portal-tab {
+    width: 100%;
+    height: 50px;
+    background-color: #007bff; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+.portal-tab h1 {
+    margin: 0;
+    font-style: italic;
+    color: #fff; 
+    padding: 5px; 
+}
+
+/* Style for the table */
+table {
+    width: 90%; 
+    border-collapse: collapse;
+    margin-top: 50px;
+    margin-left: 70px;
+    margin-right: 0px;
+    border: 1px solid grey;
+    max-width: 90%;
+}
+
+/* old */
+/* table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-top: 50px;
+    border: 1px solid grey;
+} */
+
+/* Style for table headers and cells */
+th, td {
+    border: 1px solid grey;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Style specifically for heading cells */
+th.heading {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Set the width of the first column to 30% and the second column to 70% */
+th.column1, td.column1 {
+    width: 150px;
+}
+
+th.column2, td.column2 {
+    width: 350px;
+}

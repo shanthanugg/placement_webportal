@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>SSN Placement Web Portal</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="portal-tab">
+            <h1>SSN Placement Web Portal</h1>
+            <a href="{% url 'student_login' %}" class="admin-login">
+                <i class="fas fa-user"></i> <!-- Font Awesome human icon -->
+            </a>
+        </div>
+    </div>
+    
+    <img class="scrolling-image" src="{% static 'SSN.jpg' %}" alt="Scrolling Image">
+    <section class="container">
+        <div class="ssn-info">
+            <div class="ssn-box">
+                <h2 class="blue-text">Highest package</h2>
+                <p class="blue-text">1.17 Cr CTC</p>
+            </div>
+            <div class="ssn-space"></div>
+            <div class="ssn-box">
+                <h2 class="blue-text">Average</h2>
+                <p class="blue-text">20 LPA</p>
+            </div>
+        </div>
+        <div class="pie-chart">
+            <!-- Placeholder for pie chart -->
+            <img src="{% static 'pie-chart.jpg' %}" alt="Pie Chart">
+        </div>
+        <div class="recruiters-tab">
+            <h2>Top Recruiters</h2>
+            <div class="recruiter-box">Company A</div>
+            <div class="recruiter-box">Company B</div>
+            <div class="recruiter-box">Company C</div>
+            <!-- Add more recruiter boxes as needed -->
+        </div>
+    </section>
+    <script>
+        window.addEventListener('scroll', function() {
+            const parallax = document.querySelector('.scrolling-image');
+            let scrollPosition = window.pageYOffset;
+        
+            parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+        });
+        
+    </script>
+</body>
+</html>

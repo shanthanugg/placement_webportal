@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCcG9zS8hJBVQ-c5budSk8QAjSOdMLdJ18",
+            authDomain: "placement-web-portal-c3159.firebaseapp.com",
+            databaseURL: "https://placement-web-portal-c3159-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "placement-web-portal-c3159",
+            storageBucket: "placement-web-portal-c3159.appspot.com",
+            messagingSenderId: "450583188029",
+            appId: "1:450583188029:web:cf219ec7241ad3c42e5054",
+            measurementId: "G-WDB891ZN5Q"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+</head>
+<body>
+    <!-- Your existing HTML content -->
+</body>
+</html>
