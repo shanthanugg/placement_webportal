@@ -1,0 +1,159 @@
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff; /* White background */
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.admin-login {
+    position: absolute;
+    top: 30px; /* Adjust the distance from the top */
+    right: 20px; /* Adjust the distance from the right */
+    color: #fff; /* Adjust color as needed */
+    text-decoration: none;
+    font-size: 24px; /* Adjust size as needed */
+}
+
+
+/* 
+.portal-tab {
+    display: flex;
+    align-items: center; 
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 5px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+.portal-tab h1 {
+    margin: 0;
+    font-weight: bold; 
+    font-style: normal;  
+    color: #fff;  
+    padding: 5px;  
+    margin-right: auto;
+} */
+
+/* old css */
+.portal-tab {
+    width: 100%;
+    background-color: #007bff; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+.portal-tab h1 {
+    margin: 0;
+    font-style: italic;
+    color: #fff; 
+    padding: 5px; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    position: relative;
+    z-index: 1; /* Ensure above the image */
+}
+
+.ssn-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ssn-box {
+    width: calc(50% - 10px);
+    padding: 20px;
+    background-color: #007bff; /* Blue background */
+    border-radius: 20px; /* Smoothing edges */
+}
+
+.ssn-box h2, .ssn-box p {
+    color: #fff; /* White text color */
+    font-weight: bold; /* Bold text */
+}
+
+.ssn-space {
+    width: 20px; /* Space between highest and average */
+}
+
+.pie-chart {
+    display: flex;
+    justify-content: center; /* Align content horizontally in the center */
+    align-items: center; /* Align content vertically in the center */
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    max-width: calc(90% - 10px); /* Adjust the max-width to fit inside the tab */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    position: relative;
+    padding-bottom: 50%; /* Maintain aspect ratio */
+}
+
+
+.pie-chart img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+
+.recruiters-tab {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.recruiters-tab h2 {
+    color: #007bff; /* Blue text color */
+    border-bottom: 2px solid #007bff; /* Blue bottom border */
+    padding-bottom: 10px; /* Add spacing below heading */
+}
+
+.recruiter-box {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #ff5722; /* Deep Orange */
+    border-radius: 5px;
+    color: #fff;
+}
+
+.scroll-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* Move behind content */
+}
+
+.scrolling-image {
+    display: block;
+    width: 100%; /* Occupy full width */
+    height: 400px;
+    object-fit: cover; /* Ensure the image covers the entire container */
+    position: relative;
+    transform: translateZ(-1px); /* Create the parallax effect */
+}
+
