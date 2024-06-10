@@ -4,12 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'icons/ssn_logo.ico' %}" type="image/x-icon">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="{% static 'login.css' %}"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"> <!-- Link to the CSS file -->
 </head>
 <body>
     <div class="login-container">
         <h2>Admin Login</h2>
+        {% if error_message %}
+        <script>
+            alert("{{ error_message }}");
+        </script>
+        {% endif %}
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">

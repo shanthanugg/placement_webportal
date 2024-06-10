@@ -8,6 +8,20 @@ body {
     background-color: #fff; /* White background */
 }
 
+.selected-year {
+    padding: 10px 14px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block; /* Change display to inline-block */
+    margin: 0 auto; /* Center align using margin */
+    margin-left: 42.5%;
+    margin-bottom: 20px;
+}
+
+
 .header {
     background-color: #007bff;
     color: #fff;
@@ -25,27 +39,6 @@ body {
 }
 
 
-/* 
-.portal-tab {
-    display: flex;
-    align-items: center; 
-    background-color: #007bff; 
-    color: #fff; 
-    padding: 5px;
-    border-top-left-radius: 10px; 
-    border-top-right-radius: 10px; 
-}
-
-.portal-tab h1 {
-    margin: 0;
-    font-weight: bold; 
-    font-style: normal;  
-    color: #fff;  
-    padding: 5px;  
-    margin-right: auto;
-} */
-
-/* old css */
 .portal-tab {
     width: 100%;
     background-color: #007bff; 
@@ -97,15 +90,24 @@ body {
     justify-content: center; /* Align content horizontally in the center */
     align-items: center; /* Align content vertically in the center */
     text-align: center;
-    margin-top: 40px;
-    margin-left: 50px;
-    margin-bottom: 40px;
+    margin-top: 60px; /* Reduce top margin */
+    margin-bottom: 50px; /* Reduce bottom margin */
+    margin-left: 45px;
     max-width: calc(90% - 10px); /* Adjust the max-width to fit inside the tab */
     overflow-x: auto; /* Enable horizontal scrolling */
     white-space: nowrap; /* Prevent wrapping */
     position: relative;
-    padding-bottom: 50%; /* Maintain aspect ratio */
+    padding-bottom: 5px; /* Maintain aspect ratio */
 }
+
+.recruiters-tab {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin-top: 20px; /* Reduce top margin */
+}
+
 
 
 .pie-chart img {
@@ -117,13 +119,6 @@ body {
     object-fit: contain; /* Maintain aspect ratio */
 }
 
-
-.recruiters-tab {
-    background-color: #fff; /* White background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-}
 
 .recruiters-tab h2 {
     color: #007bff; /* Blue text color */

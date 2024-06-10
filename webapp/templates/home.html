@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'icons/ssn_logo.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>SSN Placement Web Portal</title>
-    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
     <div class="header">
@@ -15,34 +16,73 @@
             <a href="{% url 'admin_login' %}" class="admin-login">
                 <i class="fas fa-user"></i> <!-- Font Awesome human icon -->
             </a>
-        </div>
-    </div>
-    
-    <img class="scrolling-image" src="{% static 'SSN.jpg' %}" alt="Scrolling Image">
+            </div>
+            </div>
+            
+            <img class="scrolling-image" src="{% static 'images/SSN.jpg' %}" alt="Scrolling Image">
     <section class="container">
+        <p class="selected-year">Year: {{ selected_year }}</p>
         <div class="ssn-info">
             <div class="ssn-box">
                 <h2 class="blue-text">Highest package</h2>
-                <p class="blue-text">1.17 Cr CTC</p>
+                <p class="blue-text">{{ highest_ctc }} CTC</p>
             </div>
             <div class="ssn-space"></div>
             <div class="ssn-box">
                 <h2 class="blue-text">Average</h2>
-                <p class="blue-text">20 LPA</p>
+                <p class="blue-text">{{ avg_floored_ctc }} LPA</p>
             </div>
         </div>
         <div class="pie-chart">
             <!-- Placeholder for pie chart -->
-            <img src="{% static 'pie-chart.jpg' %}" alt="Pie Chart">
+            <canvas id="pieChart" width="400" height="400"></canvas>
         </div>
         <div class="recruiters-tab">
             <h2>Top Recruiters</h2>
-            <div class="recruiter-box">Company A</div>
-            <div class="recruiter-box">Company B</div>
-            <div class="recruiter-box">Company C</div>
-            <!-- Add more recruiter boxes as needed -->
+            <ul>
+                {% for recruiter in top_recruiters_lst %}
+                    <li class="recruiter-box">{{ recruiter }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Dream (CTC 5-10)', 'Super Dream (CTC 10-20)', 'Marquee (CTC >20)'],
+                datasets: [{
+                    label: 'CTC Categories',
+                    data: {{ pie_chart_data }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Distribution of CTC Categories'
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                }
+            }
+        });
+    </script>
     <script>
         window.addEventListener('scroll', function() {
             const parallax = document.querySelector('.scrolling-image');
@@ -50,7 +90,6 @@
         
             parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
         });
-        
     </script>
 </body>
 </html>

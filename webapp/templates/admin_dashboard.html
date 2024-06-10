@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'icons/ssn_logo.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>SSN Placement Web Portal - Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dash_board.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="portal-tab">
+            <h1>SSN Placement Web Portal - Dashboard</h1>
+            <a href="{% url 'home' %}" class="logout">
+                <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
+            </a>
+        </div>
+    </div>
+    
+    <section class="container">
+        <div class="year-selection">
+            <form id="yearSelectForm" method="post">
+                {% csrf_token %}
+                <select name="year" onchange="this.form.submit()">
+                    {% for year in years_list %}
+                        <option value="{{ year }}" {% if year == selected_year %} selected {% endif %}>{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+            <p class="selected-year">Year: {{ selected_year }}</p>
+        </div>
+        <div class="ssn-info">
+            <div class="ssn-box">
+                <h2 class="blue-text">Highest package</h2>
+                <p class="blue-text">{{ highest_ctc }} CTC</p>
+            </div>
+            <div class="ssn-space"></div>
+            <div class="ssn-box">
+                <h2 class="blue-text">Average</h2>
+                <p class="blue-text">{{ avg_floored_ctc }} LPA</p>
+            </div>
+        </div>
+        <div class="pie-chart">
+            <!-- Placeholder for pie chart -->
+            <canvas id="pieChart" width="400" height="400"></canvas>
+        </div>
+        <div class="recruiters-tab">
+            <h2>Top Recruiters</h2>
+            <ul>
+                {% for recruiter in top_recruiters_lst %}
+                    <li class="recruiter-box">{{ recruiter }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Dream (CTC 5-10)', 'Super Dream (CTC 10-20)', 'Marquee (CTC >20)'],
+                datasets: [{
+                    label: 'CTC Categories',
+                    data: {{ pie_chart_data }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Distribution of CTC Categories'
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                }
+            }
+        });
+    </script>
+</body>
+</html>
