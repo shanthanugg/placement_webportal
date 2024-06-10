@@ -12,7 +12,7 @@ import pandas as pd
 import os
 
 # Initialize Firebase app (ensure the path to your service account key is correct)
-cred = credentials.Certificate(os.path.join(os.path.dirname(__file__), 'firebase_key.json'))
+cred = credentials.Certificate(os.path.join(os.path.dirname(__file__), './static/extras/firebase_key.json'))
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://placement-web-portal-c3159-default-rtdb.asia-southeast1.firebasedatabase.app/'
 })
@@ -80,7 +80,21 @@ def student_profile(request):
 
 
 def admin_dashboard(request):
-    # Check if user is authenticated
+    if not request.session.get('is_authenticated', False):
+        return redirect('admin_login')
+    try:
+        if not request.session.get('home_visited'):
+            return redirect('admin_login')
+    except Exception as e:
+            return redirect('admin_login')
+
+    selected_year = request.POST.get('year') if request.method == "POST" else '2024'
+    context = fetch_data(selected_year)
+    context['selected_year'] = selected_year
+    context['years_list'] = fetch_years()
+
+    return render(request, 'admin_dashboard.html', context)
+
     try:
         if not request.session.get('is_authenticated', False):
             return redirect('admin_login')  # Redirect to login page if not authenticated
