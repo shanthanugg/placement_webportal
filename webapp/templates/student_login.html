@@ -6,31 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login</title>
     <link rel="stylesheet" href="{% static 'login.css' %}"> <!-- Link to the CSS file -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCcG9zS8hJBVQ-c5budSk8QAjSOdMLdJ18",
-            authDomain: "placement-web-portal-c3159.firebaseapp.com",
-            databaseURL: "https://placement-web-portal-c3159-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "placement-web-portal-c3159",
-            storageBucket: "placement-web-portal-c3159.appspot.com",
-            messagingSenderId: "450583188029",
-            appId: "1:450583188029:web:cf219ec7241ad3c42e5054",
-            measurementId: "G-WDB891ZN5Q"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Student Login</h2>
-        <form id="student-login-form">
+        <form action="#" method="post">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="student-email">Email:</label>
-                <input type="email" id="student-email" name="student-email" required>
+                <label for="student-username">Username:</label>
+                <input type="text" id="student-username" name="student-username" required>
             </div>
             <div class="form-group">
                 <label for="student-password">Password:</label>
@@ -58,28 +42,6 @@
                 icon.className = "fa fa-eye";
             }
         }
-
-        document.getElementById('student-login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-        
-            console.log('Form submission initiated.');
-        
-            var email = document.getElementById('student-email').value;
-            var password = document.getElementById('student-password').value;
-        
-            console.log('Email:', email);
-            console.log('Password:', password);
-        
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    console.log('User authenticated successfully:', userCredential.user);
-                    window.location.href = "{% url 'student_profile' %}";
-                })
-                .catch((error) => {
-                    console.error('Error signing in:', error.message);
-                });
-        });
-        
     </script>
 </body>
 </html>
