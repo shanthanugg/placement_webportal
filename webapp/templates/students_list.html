@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="background-image: url('{% static 'images/SSN.jpg' %}'); background-size: cover; background-position: center; padding: 20px; min-height: 100vh;">
+    <img src="{% static 'images/SSN.jpg' %}" alt="Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+    <div style="background-color: rgba(51, 102, 153, 0.8); padding: 10px; text-align: center;">
+        <h2 style="display: inline;">Student Records</h2>
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for names or register numbers..." style="float: right; margin-top: 10px;">
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <table id="studentsTable" class="table table-striped" style="margin: 0 auto; font-size: 18px;">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Roll Number</th>
+                    <th>Department</th>
+                    <th>CTC</th>
+                    <th>Company</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr style="background-color: {% cycle 'white' '#cce6ff' %};">
+                    <td style="text-align: left;">{{ student.Name }}</td>
+                    <td style="text-align: left;">{{ student.RegisterNumber }}</td>
+                    <td style="text-align: left;">{{ student.Branch }}</td>
+                    <td style="text-align: left;">{{ student.CTC }}</td>
+                    <td style="text-align: left;">{{ student.FinalOffer }}</td>
+                    <td>
+                        <a href="{% url 'student_profile' student.RegisterNumber %}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("studentsTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}

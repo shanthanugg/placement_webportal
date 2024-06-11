@@ -1,0 +1,27 @@
+<!-- student_profile.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2>{{ student.Name }}</h2>
+                    <p><strong>Roll Number:</strong> {{ student.RegisterNumber }}</p>
+                    <p><strong>Department:</strong> {{ student.Branch }}</p>
+                    <p><strong>CTC:</strong> {{ student.CTC }}</p>
+                    <p><strong>Company:</strong> {{ student.FinalOffer }}</p>
+                    <!-- Add other fields as needed -->
+                    <hr>
+                    <h3>Upload Image</h3>
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
