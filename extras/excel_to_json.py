@@ -1,6 +1,5 @@
 import pandas as pd
 import json
-import numpy as np
 
 
 def replace_invalid_chars(value):

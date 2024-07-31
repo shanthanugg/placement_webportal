@@ -12,7 +12,7 @@ import pandas as pd
 import os
 
 # Initialize Firebase app (ensure the path to your service account key is correct)
-cred = credentials.Certificate(os.path.join(os.path.dirname(__file__), 'firebase_key.json'))
+cred = credentials.Certificate(os.path.join(os.path.dirname(__file__), './static/extras/firebase_key.json'))
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://placement-web-portal-c3159-default-rtdb.asia-southeast1.firebasedatabase.app/'
 })
@@ -123,7 +123,7 @@ def fetch_data(year):
 
     # Filter top recruiters
     top_recruiters_count = df['Final Offer'].value_counts().to_dict()
-    top_recruiters_lst= [key for key in top_recruiters_count if top_recruiters_count[key] > 10]
+    top_recruiters_lst= [key for key in top_recruiters_count if top_recruiters_count[key] > 5]
     avg_floored_ctc = avg_ctc//100000
 
     context = {
