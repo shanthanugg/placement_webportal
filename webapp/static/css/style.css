@@ -1,0 +1,14 @@
+/* Define alternate row colors */
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light blue */
+}
+
+tr:nth-child(odd) {
+    background-color: #bfbfbf; /* Dark blue */
+}
+
+/* Green tick */
+.green-tick {
+    color: green;
+    font-size: larger;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yearly Records</title>
+</head>
+<body>
+    <form method="post" id="yearForm">
+        {% csrf_token %}
+        <select name="year" onchange="document.getElementById('yearForm').submit();">
+            {% for year in years_list %}
+                <option value="{{ year }}" {% if year == selected_year %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <div id="students-list">
+        {% include 'students_list.html' %}
+    </div>
+
+    <script>
+        document.getElementById('yearForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('students-list').innerHTML = data.students;
+            });
+        });
+    </script>
+</body>
+</html>
