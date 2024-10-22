@@ -126,9 +126,9 @@ def fetch_data(year):
     highest_ctc = df['CTC'].max()
 
     # Generate pie chart data
-    dream_ctc = ((df['CTC'] >= 500000) & (df['CTC'] <= 1000000)).sum()
-    super_dream_ctc = ((df['CTC'] > 1000000) & (df['CTC'] <= 2000000)).sum()
-    marquee_ctc = (df['CTC'] > 2000000).sum()
+    dream_ctc = int(((df['CTC'] >= 500000) & (df['CTC'] <= 1000000)).sum())
+    super_dream_ctc = int(((df['CTC'] > 1000000) & (df['CTC'] <= 2000000)).sum())
+    marquee_ctc = int((df['CTC'] > 2000000).sum())
     pie_chart_data = [dream_ctc, super_dream_ctc, marquee_ctc]
 
     # Filter top recruiters

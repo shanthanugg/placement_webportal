@@ -55,7 +55,7 @@
                 labels: ['Dream (CTC 5-10)', 'Super Dream (CTC 10-20)', 'Marquee (CTC >20)'],
                 datasets: [{
                     label: 'CTC Categories',
-                    data: {{ pie_chart_data }},
+                    data: {{ pie_chart_data|safe }},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
